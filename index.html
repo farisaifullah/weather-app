@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>WeatherSphere Ultimate • Cuaca Interaktif</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Canvas untuk partikel hujan/salju -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Container Utama -->
+    <div class="app-container" id="appContainer">
+        
+        <!-- Header & Toggle -->
+        <div class="top-bar">
+            <div class="logo-text">
+                <i class="fas fa-cloud-sun-rain"></i> WeatherSphere
+            </div>
+            <div class="toggle-group">
+                <button class="toggle-btn" id="darkModeToggle" aria-label="Toggle dark/light mode">
+                    <i class="fas fa-moon" id="toggleIcon"></i>
+                </button>
+                <button class="toggle-btn" id="locationBtn" aria-label="Deteksi lokasi">
+                    <i class="fas fa-location-crosshairs"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search Box -->
+        <div class="search-box">
+            <input type="text" id="cityInput" placeholder="Cari kota..." autocomplete="off">
+            <button type="button" class="search-btn" id="searchBtn" aria-label="Cari cuaca" title="Cari cuaca">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Loader -->
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Memuat cuaca...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div class="error-message" id="errorMessage">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span id="errorText"></span>
+        </div>
+
+        <!-- Main Weather -->
+        <div id="weatherContent" style="display: none;">
+            <div class="main-weather">
+                <div class="city-row">
+                    <i class="fas fa-map-marker-alt location-dot"></i>
+                    <span class="city-name" id="cityName"></span>
+                </div>
+                <div class="date-text" id="currentDate"></div>
+                
+                <div class="temp-section">
+                    <i class="fas weather-icon-main" id="weatherIcon"></i>
+                    <span class="temp-value" id="temperature"></span>
+                </div>
+                <div class="condition-text" id="condition"></div>
+            </div>
+
+            <!-- Detail Grid -->
+            <div class="details-grid">
+                <div class="detail-item">
+                    <i class="fas fa-tint"></i>
+                    <span class="detail-label">Kelembaban</span>
+                    <span class="detail-value" id="humidity">--</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-wind"></i>
+                    <span class="detail-label">Angin</span>
+                    <span class="detail-value" id="windSpeed">--</span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-temperature-high"></i>
+                    <span class="detail-label">Terasa</span>
+                    <span class="detail-value" id="feelsLike">--</span>
+                </div>
+            </div>
+
+            <!-- Forecast 5 Hari -->
+            <div class="forecast-section">
+                <h3 class="forecast-title">
+                    <i class="fas fa-calendar-alt"></i> 5 Hari Ke Depan
+                </h3>
+                <div class="forecast-container" id="forecastContainer">
+                    <!-- Diisi oleh JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
